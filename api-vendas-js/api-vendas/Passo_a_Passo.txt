@@ -1,0 +1,52 @@
+- Instalar os pacotes do projeto
+yarn init -y : Incluir o package.json no projeto
+yarn add typescript ts-node-dev @types/node tsconfig-paths -D: Instalando o typescript e a tipagem no projeto
+tsconfig: Configurações do typescript
+npx tsc --init --rootDir src --outDir build --esModuleInterop --resolveJsonModule --lib es6 --module commonjs --allowJs true --noImplicitAny true
+server.ts é o ponto de entrado do nosso projeto
+yarn add -D tsconfig-paths: configuração da inicialização do projeto
+yarn add express cors express-async-errors
+yarn add -D @types/express @types/cors
+
+- Executando o projeto
+"scripts": {
+  "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts"
+}
+
+- Estrutura do projeto
+config: Configurações de bibliotecas externas, como por exemplo, autenticação, upload, email e etc.
+modules: abrangem as áreas de conhecimento da aplicação, diretamente relacionadas com as regras de negócios da
+aplicação.
+shared: módulos de uso geral compartilhado com mais de um módulo da aplicação, como por exemplo o server.ts,
+o arquivo principal de rotas, conexão com banco de dados
+services: estarão dentro de cada módulo da aplicação e serão responsáveis por todas as regras que a aplicação
+precisa entender.
+
+- Atalho para subpastas para importação
+"paths": {
+  "@config/*": ["src/config/*"],
+  "@modules/*": ["src/modules/*"],
+  "@shared/*": ["src/shared/*"]
+}
+
+- TypeORM
+Criar o arquivo ormconfig.json para conter todas as configurações dos arquivos de conexão ao banco de dados
+yarn add typeorm reflect-metadata pg
+yarn typeorm migration:create -n <name> : Criar a migration para o banco
+yarn typeorm migration:run
+
+- Validação de dados: Celebrate
+yarn add celebrate
+yarn add -D @types/joi
+
+- Criptografia
+yarn add bcryptjs
+yarn add -D @types/bcryptjs
+
+- JWT
+yarn add jsonwebtoken
+yarn add -D @types/jsonwebtoken
+
+- Lib de upload de arquivos
+yarn add multer
+yarn add -D @types/multer

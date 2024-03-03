@@ -1,0 +1,15 @@
+using BuberDinner.Contracts.Authentication;
+using Microsoft.AspNetCore.Mvc;
+
+namespace BuberDinner.Api.Controllers;
+
+[ApiController]
+[Route("auth")]
+public class AuthenticationController : ControllerBase
+{
+  [Route("register")]
+  public IActionResult Register(RegisterRequest request)
+  {
+    return Ok(request);
+  }
+}
