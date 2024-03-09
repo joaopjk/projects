@@ -7,25 +7,25 @@ export type UserProps = {
     createdAt?: Date
 }
 
-export class UserEntity extends Entity<UserProps>{
-    constructor(public readonly props: UserProps, id?:string) {
+export class UserEntity extends Entity<UserProps> {
+    constructor(public readonly props: UserProps, id?: string) {
         super(props, id)
         this.props.createdAt = this.props.createdAt ?? new Date()
     }
 
-    getName() {
+    get name() {
         return this.props.name
     }
 
-    getEmail() {
+    get email() {
         return this.props.email
     }
 
-    getPassword() {
+    get password() {
         return this.props.password
     }
 
-    getCreatedAt() {
+    get createdAt() {
         return this.props.createdAt
     }
 }

@@ -18,19 +18,19 @@ describe("UserEntity unit test", () => {
 
     it("Getter all fields", () => {
         expect(sut.props.name).toBeDefined()
-        expect(sut.props.name).toEqual(sut.getName())
+        expect(sut.props.name).toEqual(sut.name)
         expect(typeof sut.props.name).toBe("string")
 
         expect(sut.props.email).toBeDefined()
-        expect(sut.props.email).toEqual(sut.getEmail())
+        expect(sut.props.email).toEqual(sut.email)
         expect(typeof sut.props.email).toBe("string")
 
         expect(sut.props.password).toBeDefined()
-        expect(sut.props.password).toEqual(sut.getPassword())
+        expect(sut.props.password).toEqual(sut.password)
         expect(typeof sut.props.password).toBe("string")
 
         expect(sut.props.createdAt).toBeDefined()
-        expect(sut.props.createdAt).toEqual(sut.getCreatedAt())
+        expect(sut.props.createdAt).toEqual(sut.createdAt)
         expect( sut.props.createdAt).toBeInstanceOf(Date)
     })
 })
