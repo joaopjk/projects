@@ -56,7 +56,7 @@ public class ProductRepository : IProductRepository
 
             return true;
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return false;
         }
