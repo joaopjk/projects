@@ -4,7 +4,7 @@ using GeekShopping.ProductApi.Model;
 
 namespace GeekShopping.ProductApi.Config;
 
-public class MappingConfig
+public abstract class MappingConfig
 {
     public static MapperConfiguration RegisterMaps()
     {
