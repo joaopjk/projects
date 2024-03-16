@@ -10,7 +10,33 @@
         <PackageReference Include="GraphQL.NewtonsoftJson" Version="7.8.0" />
         <PackageReference Include="GraphQL.SystemTextJson" Version="7.8.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="GraphQLApiClient\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="GraphQLApiClient\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="GraphQLApiClient\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="GraphQLApiClient\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="GraphQLApiClient\obj\GraphQLApiClient.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="GraphQLApiClient\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="GraphQLApiClient\obj\project.packagespec.json" />
     </ItemGroup>
 
 </Project>
