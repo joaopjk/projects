@@ -17,6 +17,7 @@
     </ItemGroup>
     <ItemGroup>
         <Protobuf Include="../*.proto" OutputDir="%(RelativePath)Models/"/>
+        <Protobuf Remove="..\**" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Models\" />
