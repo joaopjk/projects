@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using GraphQL;
 using GraphQL.NewtonsoftJson;
 using GraphQL.Types;
 using GraphQLApi.Data.Entities;
@@ -13,10 +14,12 @@ namespace GraphQLApi.Controllers
     public class CoursesController : ControllerBase
     {
         private readonly ILogger<CoursesController> _logger;
+        private readonly ISchema _schema;
 
-        public CoursesController(ILogger<CoursesController> logger)
+        public CoursesController(ILogger<CoursesController> logger, ISchema schema)
         {
             _logger = logger;
+            _schema = schema;
         }
 
         [HttpGet]
@@ -54,12 +57,25 @@ namespace GraphQLApi.Controllers
                 builder.Types.Include<Query>();
             });
 
-            var json = await schema.ExecuteAsync(options =>
-            {
-                options.Query = query;
-            });
+            var json = await schema.ExecuteAsync(options => { options.Query = query; });
 
             return json;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
+        {
+            var result = await new DocumentExecuter()
+                .ExecuteAsync(exc =>
+                {
+                    exc.Schema = _schema;
+                    exc.Query = query.Query;
+                });
+
+            if (result.Errors?.Count > 0)
+                return BadRequest(result.Errors);
+            
+            return Ok(result);
         }
     }
 }
